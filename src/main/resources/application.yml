@@ -1,0 +1,57 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: 프로젝트 명
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.postgresql.Driver
+#    url: jdbc:mysql://host.docker.internal:3306/디비명?serverTimezone=Asia/Seoul
+#    url: jdbc:mysql://localhost:3306/디비명?serverTimezone=Asia/Seoul
+#    url: jdbc:postgresql://host.docker.internal:5432/디비명
+#    url: jdbc:postgresql://localhost:5432/디비명
+#    username: postgres
+#    username: root
+    password: 159624
+    hikari:
+      # SHOW GLOBAL VARIABLES LIKE 'max_connections'; 이 명령어로 max-pool size 조회 가능
+      maximum-pool-size: 100 #최대 pool 크기, 본인의 경우 151
+      minimum-idle: 15 #최소 pool 크기
+      idle-timeout: 600000 #연결위한 최대 유후 시간 -> 10분
+      max-lifetime: 1800000 #반납된 커넥션의 최대 수명 -> 30분
+  jpa:
+    hibernate:
+      ddl-auto: create
+      query:
+        in_clause_parameter_padding: true
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+    open-in-view: false
+  redis:
+    url: redis://default:159624@127.0.0.1:6379
+#    url: redis://default:159624@host.docker.internal:6379
+
+# 프러덕션환경에서는 아래 p6spy 로깅을 false로 두고 배포한다.
+decorator:
+  datasource:
+    p6spy:
+      enable-logging: true
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.springframework.web: DEBUG
+    org.springframework.cache: TRACE
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info
