@@ -2,7 +2,7 @@
 
 ## install
 * `mkdir 파일명`
-* `git clone "git 주소" "파일명"`
+* `git clone https://github.com/liveforone/chan-spring.git "파일명"`
 * `.git 삭제`
 * `cd 파일명`
 * `git remote -v`
