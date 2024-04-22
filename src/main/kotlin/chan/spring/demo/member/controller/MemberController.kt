@@ -36,26 +36,26 @@ class MemberController
 
         @PostMapping(MemberUrl.SIGNUP)
         fun signup(
-            @RequestBody @Valid signupRequest: SignupRequest
+            @RequestBody @Valid signupDto: SignupDto
         ): ResponseEntity<String> {
-            memberCommandService.signup(signupRequest)
-            logger().info(MemberControllerLog.SIGNUP_SUCCESS + signupRequest.email)
+            memberCommandService.signup(signupDto)
+            logger().info(MemberControllerLog.SIGNUP_SUCCESS + signupDto.email)
 
             return MemberResponse.signupSuccess()
         }
 
         @PostMapping(MemberUrl.LOGIN)
         fun login(
-            @RequestBody @Valid loginRequest: LoginRequest,
+            @RequestBody @Valid loginDto: LoginDto,
             response: HttpServletResponse
         ): ResponseEntity<String> {
-            val tokenInfo = memberCommandService.login(loginRequest)
+            val tokenInfo = memberCommandService.login(loginDto)
             response.apply {
                 addHeader(MemberControllerConstant.ACCESS_TOKEN, tokenInfo.accessToken)
                 addHeader(MemberControllerConstant.REFRESH_TOKEN, tokenInfo.refreshToken)
                 addHeader(MemberControllerConstant.MEMBER_ID, tokenInfo.id.toString())
             }
-            logger().info(MemberControllerLog.LOGIN_SUCCESS + loginRequest.email)
+            logger().info(MemberControllerLog.LOGIN_SUCCESS + loginDto.email)
 
             return MemberResponse.loginSuccess()
         }
@@ -78,11 +78,11 @@ class MemberController
 
         @PatchMapping(MemberUrl.UPDATE_PASSWORD)
         fun updatePassword(
-            @RequestBody @Valid updatePassword: UpdatePassword,
+            @RequestBody @Valid updatePasswordDto: UpdatePasswordDto,
             principal: Principal
         ): ResponseEntity<String> {
             val memberId = UUID.fromString(principal.name)
-            memberCommandService.updatePassword(updatePassword, memberId)
+            memberCommandService.updatePassword(updatePasswordDto, memberId)
             logger().info(MemberControllerLog.UPDATE_PW_SUCCESS + memberId)
 
             return MemberResponse.updatePwSuccess()
@@ -99,21 +99,21 @@ class MemberController
 
         @PostMapping(MemberUrl.RECOVERY_MEMBER)
         fun recoveryMember(
-            @RequestBody @Valid recoveryRequest: RecoveryRequest
+            @RequestBody @Valid recoveryDto: RecoveryDto
         ): ResponseEntity<String> {
-            memberCommandService.recoveryMember(recoveryRequest)
-            logger().info(MemberControllerLog.RECOVERY_SUCCESS + recoveryRequest.email)
+            memberCommandService.recoveryMember(recoveryDto)
+            logger().info(MemberControllerLog.RECOVERY_SUCCESS + recoveryDto.email)
 
             return MemberResponse.recoverySuccess()
         }
 
         @DeleteMapping(MemberUrl.WITHDRAW)
         fun withdraw(
-            @RequestBody @Valid withdrawRequest: WithdrawRequest,
+            @RequestBody @Valid withdrawDto: WithdrawDto,
             principal: Principal
         ): ResponseEntity<String> {
             val memberId = UUID.fromString(principal.name)
-            memberCommandService.withdraw(withdrawRequest, memberId)
+            memberCommandService.withdraw(withdrawDto, memberId)
             logger().info(MemberControllerLog.WITHDRAW_SUCCESS + memberId)
 
             return MemberResponse.withdrawSuccess()
