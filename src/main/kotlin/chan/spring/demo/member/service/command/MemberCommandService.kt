@@ -29,19 +29,19 @@ class MemberCommandService
         private val jwtTokenProvider: JwtTokenProvider,
         private val jwtTokenService: JwtTokenService
     ) {
-        fun signup(signupRequest: SignupRequest) {
-            with(signupRequest) {
+        fun signup(signupDto: SignupDto) {
+            with(signupDto) {
                 Member.create(email!!, pw!!).also {
                     memberRepository.save(it)
                 }
             }
         }
 
-        fun login(loginRequest: LoginRequest): JwtTokenInfo {
+        fun login(loginDto: LoginDto): JwtTokenInfo {
             val authentication: Authentication =
                 authenticationManagerBuilder
                     .`object`
-                    .authenticate(UsernamePasswordAuthenticationToken(loginRequest.email, loginRequest.pw))
+                    .authenticate(UsernamePasswordAuthenticationToken(loginDto.email, loginDto.pw))
 
             return jwtTokenProvider.generateToken(authentication).also {
                 jwtTokenService.createRefreshToken(it.id, it.refreshToken)
@@ -57,10 +57,10 @@ class MemberCommandService
         }
 
         fun updatePassword(
-            updatePassword: UpdatePassword,
+            updatePasswordDto: UpdatePasswordDto,
             id: UUID
         ) {
-            with(updatePassword) {
+            with(updatePasswordDto) {
                 memberRepository.findMemberById(id).also { it.updatePw(newPassword!!, oldPassword!!) }
             }
         }
@@ -69,18 +69,18 @@ class MemberCommandService
             jwtTokenService.removeRefreshToken(id)
         }
 
-        fun recoveryMember(recoveryRequest: RecoveryRequest) {
-            with(recoveryRequest) {
+        fun recoveryMember(recoveryDto: RecoveryDto) {
+            with(recoveryDto) {
                 memberRepository.findMemberByEmailIncludeWithdraw(email!!).also { it.recovery(pw!!) }
             }
         }
 
         fun withdraw(
-            withdrawRequest: WithdrawRequest,
+            withdrawDto: WithdrawDto,
             id: UUID
         ) {
             memberRepository.findMemberById(id)
-                .takeIf { isMatchPassword(withdrawRequest.pw!!, it.pw) }
+                .takeIf { isMatchPassword(withdrawDto.pw!!, it.pw) }
                 ?.also {
                     it.withdraw()
                     jwtTokenService.removeRefreshToken(id)
