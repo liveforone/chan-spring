@@ -6,6 +6,5 @@ import java.util.*
 data class MemberInfo(
     val id: UUID,
     val auth: Role,
-    val email: String,
-    val nickName: String
+    val email: String
 )
