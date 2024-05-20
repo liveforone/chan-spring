@@ -15,9 +15,9 @@ class RedisRepository(
     private val redisTemplate: RedisTemplate<String, Any>,
     private val objectMapper: ObjectMapper
 ) {
-    fun save(
+    fun <T> save(
         key: String,
-        value: Any,
+        value: T,
         timeOut: RedisKeyValueTimeOut? = null
     ) {
         timeOut?.let {
