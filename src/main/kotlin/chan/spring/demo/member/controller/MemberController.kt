@@ -4,8 +4,7 @@ import chan.spring.demo.logger
 import chan.spring.demo.member.exception.MemberException
 import chan.spring.demo.member.exception.MemberExceptionMessage
 import chan.spring.demo.jwt.domain.vo.JwtTokenInfo
-import chan.spring.demo.member.controller.constant.MemberControllerConstant
-import chan.spring.demo.member.controller.constant.MemberRequestHeaderConstant
+import chan.spring.demo.member.controller.constant.MemberRequestHeader
 import chan.spring.demo.member.controller.constant.MemberUrl
 import chan.spring.demo.member.controller.response.MemberResponse
 import chan.spring.demo.member.domain.vo.MemberInfo
@@ -51,9 +50,9 @@ class MemberController
         ): ResponseEntity<String> {
             val tokenInfo = memberCommandService.login(loginDto)
             response.apply {
-                addHeader(MemberControllerConstant.ACCESS_TOKEN, tokenInfo.accessToken)
-                addHeader(MemberControllerConstant.REFRESH_TOKEN, tokenInfo.refreshToken)
-                addHeader(MemberControllerConstant.MEMBER_ID, tokenInfo.id.toString())
+                addHeader(MemberRequestHeader.ACCESS_TOKEN, tokenInfo.accessToken)
+                addHeader(MemberRequestHeader.REFRESH_TOKEN, tokenInfo.refreshToken)
+                addHeader(MemberRequestHeader.MEMBER_ID, tokenInfo.id.toString())
             }
             logger().info(MemberControllerLog.LOGIN_SUCCESS + loginDto.email)
 
@@ -62,8 +61,8 @@ class MemberController
 
         @PutMapping(MemberUrl.JWT_TOKEN_REISSUE)
         fun jwtTokenReissue(
-            @RequestHeader(MemberRequestHeaderConstant.ID) id: String?,
-            @RequestHeader(MemberRequestHeaderConstant.REFRESH_TOKEN) refreshToken: String?
+            @RequestHeader(MemberRequestHeader.ID) id: String?,
+            @RequestHeader(MemberRequestHeader.REFRESH_TOKEN) refreshToken: String?
         ): ResponseEntity<JwtTokenInfo> {
             if (id.isNullOrBlank() || refreshToken.isNullOrBlank()) {
                 throw MemberException(MemberExceptionMessage.TOKEN_REISSUE_HEADER_IS_NULL, "UNRELIABLE-MEMBER")
