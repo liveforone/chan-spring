@@ -1,15 +1,15 @@
 package chan.spring.demo.member.controller
 
 import chan.spring.demo.logger
-import chan.spring.demo.member.dto.request.*
-import chan.spring.demo.exception.exception.MemberException
-import chan.spring.demo.exception.message.MemberExceptionMessage
-import chan.spring.demo.jwt.dto.JwtTokenInfo
+import chan.spring.demo.member.exception.MemberException
+import chan.spring.demo.member.exception.MemberExceptionMessage
+import chan.spring.demo.jwt.domain.vo.JwtTokenInfo
 import chan.spring.demo.member.controller.constant.MemberControllerConstant
 import chan.spring.demo.member.controller.constant.MemberRequestHeaderConstant
 import chan.spring.demo.member.controller.constant.MemberUrl
 import chan.spring.demo.member.controller.response.MemberResponse
-import chan.spring.demo.member.dto.response.MemberInfo
+import chan.spring.demo.member.domain.vo.MemberInfo
+import chan.spring.demo.member.dto.*
 import chan.spring.demo.member.log.MemberControllerLog
 import chan.spring.demo.member.service.command.MemberCommandService
 import chan.spring.demo.member.service.query.MemberQueryService

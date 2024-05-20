@@ -1,12 +1,12 @@
 package chan.spring.demo.jwt.service
 
-import chan.spring.demo.exception.exception.JwtCustomException
-import chan.spring.demo.exception.message.JwtExceptionMessage
-import chan.spring.demo.globalConfig.redis.RedisKeyValueTimeOut
-import chan.spring.demo.globalConfig.redis.RedisRepository
+import chan.spring.demo.jwt.exception.JwtCustomException
+import chan.spring.demo.jwt.exception.JwtExceptionMessage
+import chan.spring.demo.global.config.redis.RedisKeyValueTimeOut
+import chan.spring.demo.global.config.redis.RedisRepository
 import chan.spring.demo.jwt.cache.JwtCache
 import chan.spring.demo.jwt.domain.RefreshToken
-import chan.spring.demo.jwt.dto.JwtTokenInfo
+import chan.spring.demo.jwt.domain.vo.JwtTokenInfo
 import chan.spring.demo.jwt.filterLogic.JwtTokenProvider
 import chan.spring.demo.jwt.log.JwtServiceLog
 import chan.spring.demo.logger

@@ -1,12 +1,12 @@
 package chan.spring.demo.member.domain
 
 import chan.spring.demo.converter.RoleConverter
-import chan.spring.demo.exception.exception.MemberException
-import chan.spring.demo.exception.message.MemberExceptionMessage
-import chan.spring.demo.globalUtil.UUID_TYPE
-import chan.spring.demo.globalUtil.createUUID
-import chan.spring.demo.globalUtil.encodePassword
-import chan.spring.demo.globalUtil.isMatchPassword
+import chan.spring.demo.member.exception.MemberException
+import chan.spring.demo.member.exception.MemberExceptionMessage
+import chan.spring.demo.global.util.UUID_TYPE
+import chan.spring.demo.global.util.createUUID
+import chan.spring.demo.global.util.encodePassword
+import chan.spring.demo.global.util.isMatchPassword
 import chan.spring.demo.member.domain.constant.MemberConstant
 import jakarta.persistence.*
 import org.springframework.security.core.GrantedAuthority

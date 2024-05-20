@@ -1,7 +1,7 @@
 package chan.spring.demo.jwt.filterLogic
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import chan.spring.demo.exception.exception.JwtCustomException
+import chan.spring.demo.jwt.exception.JwtCustomException
 import chan.spring.demo.jwt.constant.JwtConstant
 import chan.spring.demo.logger
 import jakarta.servlet.FilterChain

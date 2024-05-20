@@ -1,9 +1,9 @@
 package chan.spring.demo.jwt.filterLogic
 
-import chan.spring.demo.exception.exception.JwtCustomException
-import chan.spring.demo.exception.message.JwtExceptionMessage
+import chan.spring.demo.jwt.exception.JwtCustomException
+import chan.spring.demo.jwt.exception.JwtExceptionMessage
 import chan.spring.demo.jwt.constant.JwtConstant
-import chan.spring.demo.jwt.dto.JwtTokenInfo
+import chan.spring.demo.jwt.domain.vo.JwtTokenInfo
 import chan.spring.demo.logger
 import chan.spring.demo.member.domain.Role
 import io.jsonwebtoken.*

@@ -1,21 +1,20 @@
 package chan.spring.demo.member.domain
 
-import chan.spring.demo.globalUtil.isMatchPassword
+import chan.spring.demo.global.util.isMatchPassword
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Test
 
 class MemberTest {
-
     @Test
     fun isAdmin() {
-        //given
+        // given
         val email = "admin@gmail.com"
         val pw = "1234"
 
-        //when
+        // when
         val admin = Member.create(email, pw)
 
-        //then
+        // then
         Assertions.assertThat(admin.isAdmin()).isTrue()
     }
 
@@ -44,7 +43,7 @@ class MemberTest {
         // when
         member.withdraw()
 
-        //then
+        // then
         Assertions.assertThat(member.auth).isEqualTo(Role.WITHDRAW)
     }
 
@@ -59,7 +58,7 @@ class MemberTest {
         // when
         member.recovery(pw)
 
-        //then
+        // then
         Assertions.assertThat(member.auth).isEqualTo(Role.MEMBER)
     }
 }

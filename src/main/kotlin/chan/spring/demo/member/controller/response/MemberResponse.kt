@@ -1,6 +1,6 @@
 package chan.spring.demo.member.controller.response
 
-import chan.spring.demo.member.dto.response.MemberInfo
+import chan.spring.demo.member.domain.vo.MemberInfo
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 

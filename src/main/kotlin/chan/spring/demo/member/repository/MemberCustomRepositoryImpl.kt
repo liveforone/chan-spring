@@ -2,12 +2,12 @@ package chan.spring.demo.member.repository
 
 import com.querydsl.core.types.Projections
 import com.querydsl.jpa.impl.JPAQueryFactory
-import chan.spring.demo.exception.exception.MemberException
-import chan.spring.demo.exception.message.MemberExceptionMessage
+import chan.spring.demo.member.exception.MemberException
+import chan.spring.demo.member.exception.MemberExceptionMessage
 import chan.spring.demo.member.domain.Member
 import chan.spring.demo.member.domain.QMember
 import chan.spring.demo.member.domain.Role
-import chan.spring.demo.member.dto.response.MemberInfo
+import chan.spring.demo.member.domain.vo.MemberInfo
 import java.util.*
 
 class MemberCustomRepositoryImpl(
