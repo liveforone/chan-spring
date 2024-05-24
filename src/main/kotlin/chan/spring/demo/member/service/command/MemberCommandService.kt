@@ -4,11 +4,11 @@ import chan.spring.demo.logger
 import chan.spring.demo.member.exception.MemberException
 import chan.spring.demo.member.exception.MemberExceptionMessage
 import chan.spring.demo.global.util.isMatchPassword
-import chan.spring.demo.jwt.domain.vo.JwtTokenInfo
+import chan.spring.demo.jwt.dto.JwtTokenInfo
 import chan.spring.demo.jwt.filterLogic.JwtTokenProvider
 import chan.spring.demo.jwt.service.JwtTokenService
 import chan.spring.demo.member.domain.Member
-import chan.spring.demo.member.dto.*
+import chan.spring.demo.member.dto.request.*
 import chan.spring.demo.member.log.MemberServiceLog
 import chan.spring.demo.member.repository.MemberRepository
 import org.springframework.beans.factory.annotation.Autowired

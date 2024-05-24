@@ -4,7 +4,7 @@ import chan.spring.demo.jwt.exception.JwtCustomException
 import chan.spring.demo.member.exception.MemberException
 import chan.spring.demo.jwt.service.JwtTokenService
 import chan.spring.demo.member.domain.Role
-import chan.spring.demo.member.dto.*
+import chan.spring.demo.member.dto.request.*
 import chan.spring.demo.member.service.query.MemberQueryService
 import jakarta.persistence.EntityManager
 import org.assertj.core.api.Assertions

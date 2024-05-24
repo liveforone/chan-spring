@@ -1,4 +1,4 @@
-package chan.spring.demo.member.domain.vo
+package chan.spring.demo.member.dto.response
 
 import chan.spring.demo.member.domain.Role
 import java.util.*

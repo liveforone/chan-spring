@@ -1,4 +1,4 @@
-package chan.spring.demo.jwt.domain.vo
+package chan.spring.demo.jwt.dto
 
 import java.util.UUID
 

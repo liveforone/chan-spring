@@ -2,7 +2,7 @@ package chan.spring.demo.member.repository
 
 import chan.spring.demo.member.domain.Member
 import chan.spring.demo.member.domain.Role
-import chan.spring.demo.member.domain.vo.MemberInfo
+import chan.spring.demo.member.dto.response.MemberInfo
 import java.util.*
 
 interface MemberCustomRepository {

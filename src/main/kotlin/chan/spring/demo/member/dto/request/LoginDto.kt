@@ -1,4 +1,4 @@
-package chan.spring.demo.member.dto
+package chan.spring.demo.member.dto.request
 
 import jakarta.validation.constraints.NotBlank
 
